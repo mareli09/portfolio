@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mar Eli C. Sagsagat — Developer & IT Educator</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f1b2d;--navy-light:#1a2d47;--accent:#3b82f6;--accent-glow:#60a5fa;
+  --cream:#faf8f5;--warm-gray:#e8e4df;--text:#2c2c2c;--text-muted:#6b6b6b;
+  --card-bg:#ffffff;--border:#e2ddd7;--section-bg:#f5f2ee;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--cream);line-height:1.7;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .3s}
+a:hover{color:var(--accent-glow)}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 50%,#1e3a5f 100%);
+  color:#fff;padding:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+  background:radial-gradient(circle at 30% 50%,rgba(59,130,246,.08) 0%,transparent 50%),
+             radial-gradient(circle at 70% 80%,rgba(96,165,250,.06) 0%,transparent 40%);
+  animation:drift 20s ease-in-out infinite;
+}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(-2%,1%)}}
+.hero-inner{
+  position:relative;z-index:1;display:flex;align-items:center;gap:3rem;
+  max-width:900px;padding:3rem 2rem;flex-wrap:wrap;justify-content:center;
+}
+.hero-photo{
+  width:160px;height:160px;border-radius:50%;overflow:hidden;
+  border:4px solid rgba(255,255,255,.15);box-shadow:0 0 40px rgba(59,130,246,.2);
+  flex-shrink:0;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-text{text-align:left}
+.hero-text h1{
+  font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:800;
+  letter-spacing:-.02em;line-height:1.1;margin-bottom:.5rem;
+}
+.hero-text .tagline{
+  font-size:1.15rem;color:rgba(255,255,255,.7);margin-bottom:1rem;font-weight:400;
+}
+.hero-text .credentials{
+  font-size:.85rem;color:rgba(255,255,255,.5);letter-spacing:.05em;text-transform:uppercase;
+}
+.hero-contact{
+  display:flex;gap:1.5rem;margin-top:1.2rem;flex-wrap:wrap;
+}
+.hero-contact a{
+  color:rgba(255,255,255,.65);font-size:.9rem;transition:color .3s;
+}
+.hero-contact a:hover{color:#fff}
+.hero-contact a svg{vertical-align:middle;margin-right:.3rem}
+.scroll-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.3);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.7}}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+  padding:.8rem 2rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;
+}
+nav a{
+  font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);
+  font-weight:500;padding:.3rem 0;border-bottom:2px solid transparent;transition:all .3s;
+}
+nav a:hover,nav a.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* SECTIONS */
+section{padding:4rem 2rem}
+.container{max-width:800px;margin:0 auto}
+.section-title{
+  font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;
+  color:var(--navy);margin-bottom:.3rem;
+}
+.section-subtitle{
+  font-size:.85rem;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:2rem;
+}
+.alt-bg{background:var(--section-bg)}
+
+/* ABOUT */
+.about-text{font-size:1.05rem;line-height:1.9;color:var(--text)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.skill-card{
+  background:var(--card-bg);border:1px solid var(--border);border-radius:12px;
+  padding:1.5rem;transition:transform .3s,box-shadow .3s;
+}
+.skill-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.skill-card h3{
+  font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:.6rem;font-weight:700;
+}
+.skill-card p{font-size:.9rem;color:var(--text);line-height:1.6}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--border);
+}
+.timeline-item{
+  position:relative;margin-bottom:2.5rem;padding-left:1.5rem;
+}
+.timeline-item::before{
+  content:'';position:absolute;left:-2rem;top:.5rem;width:10px;height:10px;
+  border-radius:50%;background:var(--accent);border:2px solid var(--cream);
+  box-shadow:0 0 0 3px var(--accent);z-index:1;
+}
+.alt-bg .timeline-item::before{border-color:var(--section-bg)}
+.timeline-item h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:.15rem}
+.timeline-item .org{font-size:.9rem;color:var(--text-muted);font-style:italic}
+.timeline-item .period{
+  font-size:.78rem;color:var(--accent);font-weight:500;margin-bottom:.5rem;
+  letter-spacing:.03em;
+}
+.timeline-item .tech{
+  font-size:.75rem;color:var(--accent);background:rgba(59,130,246,.08);
+  padding:.2rem .6rem;border-radius:4px;display:inline-block;margin-bottom:.5rem;
+}
+.timeline-item ul{list-style:none;padding:0}
+.timeline-item li{
+  font-size:.9rem;line-height:1.7;position:relative;padding-left:1rem;margin-bottom:.3rem;
+}
+.timeline-item li::before{
+  content:'—';position:absolute;left:0;color:var(--accent);font-weight:700;
+}
+
+/* EDUCATION */
+.edu-item{margin-bottom:1.5rem}
+.edu-item h3{font-size:1rem;font-weight:700;color:var(--navy)}
+.edu-item .school{font-size:.9rem;color:var(--text-muted)}
+.edu-item .detail{font-size:.82rem;color:var(--text-muted);font-style:italic}
+
+/* CERTS */
+.cert-list{list-style:none;padding:0}
+.cert-list li{
+  font-size:.9rem;padding:.6rem 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:baseline;gap:.5rem;
+}
+.cert-list li::before{content:'✦';color:var(--accent);font-size:.7rem}
+
+/* CONTACT */
+.contact-section{
+  background:var(--navy);color:#fff;text-align:center;
+}
+.contact-section .section-title{color:#fff}
+.contact-section .section-subtitle{color:rgba(255,255,255,.5)}
+.contact-grid{
+  display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;
+}
+.contact-grid a{
+  color:rgba(255,255,255,.7);font-size:.95rem;transition:color .3s;
+}
+.contact-grid a:hover{color:#fff}
+
+/* FOOTER */
+footer{
+  text-align:center;padding:1.5rem;background:var(--navy);
+  color:rgba(255,255,255,.3);font-size:.75rem;border-top:1px solid rgba(255,255,255,.05);
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hero-text h1{font-size:2rem}
+  .hero-inner{gap:1.5rem;text-align:center}
+  .hero-text{text-align:center}
+  .hero-contact{justify-content:center}
+  nav{gap:1rem}
+  section{padding:3rem 1.2rem}
+  .skills-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-photo">
+      <img src="images/profile.png" alt="Mar Eli C. Sagsagat">
+    </div>
+    <div class="hero-text">
+      <h1>Mar Eli C. Sagsagat</h1>
+      <div class="tagline">Full-Stack Developer · IT Educator · AI Integrator</div>
+      <div class="credentials">MIT, BSIT · DIT Candidate (Aug 2026)</div>
+      <div class="hero-contact">
+        <a href="mailto:mareli.sagsagat@gmail.com">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          mareli.sagsagat@gmail.com
+        </a>
+        <a href="tel:+639663064653">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +63 966 306 4653
+        </a>
+        <a href="https://mareli.strikingly.com" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll to explore ↓</div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-subtitle">About Me</div>
+    <h2 class="section-title">Developer. Educator. Builder.</h2>
+    <br>
+    <p class="about-text">
+      Full-stack developer and IT educator with over 10 years of professional experience spanning
+      academic instruction, government systems, and private-sector web development. I architect and
+      deliver end-to-end web applications using modern frameworks, with recent projects completed
+      from design through deployment in rapid timelines. Skilled in integrating AI services and APIs
+      into production systems for decision support and intelligent automation. I combine deep
+      technical foundations with strong communication and mentoring abilities — shaped by a decade
+      of teaching programming, systems development, and database management at the tertiary level.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="alt-bg">
+  <div class="container">
+    <div class="section-subtitle">Technical Arsenal</div>
+    <h2 class="section-title">Skills</h2>
+    <br>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <p>PHP, JavaScript (ES6+), Python, Java, C#, C, SQL</p>
+      </div>
+      <div class="skill-card">
+        <h3>Frameworks</h3>
+        <p>Laravel, CodeIgniter, Bootstrap, Materialize CSS, W3.CSS, AdminLTE, jQuery</p>
+      </div>
+      <div class="skill-card">
+        <h3>Frontend</h3>
+        <p>HTML5, CSS3, Progressive Web Applications (PWA)</p>
+      </div>
+      <div class="skill-card">
+        <h3>Databases</h3>
+        <p>MySQL, SQL Server, phpMyAdmin, Firebase</p>
+      </div>
+      <div class="skill-card">
+        <h3>Mobile</h3>
+        <p>Android Studio (Java), Flutter</p>
+      </div>
+      <div class="skill-card">
+        <h3>AI &amp; APIs</h3>
+        <p>OpenAI API integration, sentiment analysis, AI-assisted development workflows</p>
+      </div>
+      <div class="skill-card">
+        <h3>DevOps &amp; Hosting</h3>
+        <p>Git, GitHub, cPanel, Hostinger, AWS (migration &amp; deployment), XAMPP</p>
+      </div>
+      <div class="skill-card">
+        <h3>CMS &amp; Tools</h3>
+        <p>WordPress, Elementor, System Administration</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-subtitle">What I've Built</div>
+    <h2 class="section-title">Key Projects</h2>
+    <br>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>ceso.me — Community Extension Outreach System</h3>
+        <div class="tech">Laravel · PHP · MySQL · OpenAI API · Hostinger</div>
+        <ul>
+          <li>Designed and developed a full-stack web platform for managing community extension programs with real-time reporting and data visualization</li>
+          <li>Integrated OpenAI-powered Decision Support System (DSS) module that generates actionable insights from program data</li>
+          <li>Includes sentiment analysis of stakeholder feedback to surface community engagement trends</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>OJT Management System — Freelance</h3>
+        <div class="tech">Laravel · PHP · MySQL · AI Chatbot · AWS</div>
+        <ul>
+          <li>Built an on-the-job training management platform with automated tracking, evaluation workflows, and reporting dashboards</li>
+          <li>Developed AI-driven chatbot and decision-support features to assist coordinators and students</li>
+          <li>Managed full deployment lifecycle including migration from cPanel hosting to AWS</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Ongoing Research &amp; Development</h3>
+        <div class="tech">AI · Mobile · Cybersecurity</div>
+        <ul>
+          <li>Web-Based Cybersecurity Learning System with Capture the Flag Challenges</li>
+          <li>Funded Futures: Mobile-Based Scholarship Finder with Content-Based Filtering AI</li>
+          <li>AgroSense: Mobile App for Crop Information with Pest &amp; Disease Image Detection for Rice</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="alt-bg">
+  <div class="container">
+    <div class="section-subtitle">Professional Journey</div>
+    <h2 class="section-title">Experience</h2>
+    <br>
+
+    <h3 style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;font-weight:700;">Industry</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Web Developer</h3>
+        <div class="org">Jrooz Review Center, Makati</div>
+        <div class="period">January 2021 — June 2021</div>
+        <ul>
+          <li>Developed and maintained web-based systems and internal tools supporting review center operations</li>
+          <li>Handled front-end and back-end development, content management, and hosting deployment</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Computer Programmer II</h3>
+        <div class="org">National Commission for Culture and the Arts (NCCA), Manila</div>
+        <div class="period">January 2018 — September 2018</div>
+        <ul>
+          <li>Developed government information systems and contributed to digital transformation initiatives</li>
+          <li>Participated in the DICT Executive Lecture Series on Data Management</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:2rem 0 1rem;font-weight:700;">Academic</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Assistant Professor II</h3>
+        <div class="org">FEU Institute of Technology, Manila</div>
+        <div class="period">February 2025 — Present</div>
+        <ul>
+          <li>Teaching IT and programming courses at the tertiary level with emphasis on practical development skills</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Assistant Professor I</h3>
+        <div class="org">Technological Institute of the Philippines (TIP), Manila</div>
+        <div class="period">2021 — 2024</div>
+        <ul>
+          <li>Delivered courses in web development, programming, and database management</li>
+          <li>Led community extension activities including computer literacy programs for public schools</li>
+          <li>Supervised capstone/thesis projects involving AI, mobile development, and web systems</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>IT/CS Program Head</h3>
+        <div class="org">STI Academic Center Caloocan</div>
+        <div class="period">2019 — 2021</div>
+        <ul>
+          <li>Managed IT and CS programs, including curriculum development, faculty coordination, and student advising</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>IT Instructor / Faculty</h3>
+        <div class="org">STI Academic Center Caloocan & St. Jude College Manila</div>
+        <div class="period">2015 — 2019</div>
+        <ul>
+          <li>Taught programming, web development, and database courses across multiple institutions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-subtitle">Academic Background</div>
+    <h2 class="section-title">Education</h2>
+    <br>
+    <div class="edu-item">
+      <h3>Doctor in Information Technology (DIT) — Expected August 2026</h3>
+      <div class="school">La Consolacion University Philippines, Malolos, Bulacan</div>
+      <div class="detail">Coursework in Cybersecurity &amp; Data Privacy</div>
+    </div>
+    <div class="edu-item">
+      <h3>Master in Information Technology (MIT) — 2019</h3>
+      <div class="school">Adamson University, Manila</div>
+    </div>
+    <div class="edu-item">
+      <h3>Bachelor of Science in Information Technology (BSIT) — 2015</h3>
+      <div class="school">STI Academic Center, Caloocan</div>
+    </div>
+
+    <br>
+    <div class="section-subtitle" style="margin-top:1rem;">Credentials &amp; Development</div>
+    <h2 class="section-title">Certifications</h2>
+    <br>
+    <ul class="cert-list">
+      <li>ICT Specialist Proficiency — DICT (June 2021)</li>
+      <li>EDP Specialist — DICT (June 2021)</li>
+      <li>Member, Philippine Society of IT Educators (2022–Present)</li>
+      <li>Cloud Security Best Practices with Microsoft Azure — DICT (2021)</li>
+      <li>Data Privacy Protection Training — DICT (2021)</li>
+      <li>Python Programming Essentials — DICT (2021)</li>
+      <li>Java Programming Fundamentals — DICT (2021)</li>
+      <li>Blender and Unity Training — TIP Manila (2024)</li>
+      <li>Virtual Reality and Applications Workshop — TIP Manila (2023)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="section-subtitle">Get in Touch</div>
+    <h2 class="section-title">Let's Build Something Together</h2>
+    <br>
+    <div class="contact-grid">
+      <a href="mailto:mareli.sagsagat@gmail.com">mareli.sagsagat@gmail.com</a>
+      <a href="tel:+639663064653">+63 966 306 4653</a>
+      <a href="https://mareli.strikingly.com" target="_blank">mareli.strikingly.com</a>
+    </div>
+    <p style="margin-top:1.5rem;color:rgba(255,255,255,.4);font-size:.85rem;">Caloocan City, Philippines</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Mar Eli C. Sagsagat. Built with purpose.
+</footer>
+
+</body>
+</html>
